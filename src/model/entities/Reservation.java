@@ -41,10 +41,9 @@ public class Reservation {
 		return checkOut;
 	}
 
-	private long duration() {
+	public long duration() {
 		long diff = checkOut.getTime() - checkIn.getTime();
-		return TimeUnit.DAYS.convert(diff, TimeUnit.MICROSECONDS);
-
+		return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 	}
 
 	public void updateDate(Date checkIn, Date checkODate) throws DomException {
@@ -64,8 +63,16 @@ public class Reservation {
 
 	@Override
 	public String toString() {
-		return "Room " + roomNumber + ", check-in: " + sdf.format(checkIn) + ", check-out: " + sdf.format(checkOut)
-				+ ", " + duration() + " nights";
+		return "Room "
+			+ roomNumber
+			+ ", check-in: "
+			+ sdf.format(checkIn)
+			+ ", check-out: "
+			+ sdf.format(checkOut)
+			+ ", "
+			+ duration()
+			+ " nights";
 	}
-
 }
+
+
